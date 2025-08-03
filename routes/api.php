@@ -3,6 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InventoryItemController;
+use App\Http\Controllers\StockTransferController;
+use App\Http\Controllers\WarehouseController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +27,8 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/login', [AuthController::class, "login"]);
 Route::post('/register', [AuthController::class, "register"]);
+
+
+Route::get('/inventory-items', [InventoryItemController::class, 'index']);
+Route::post('/stock-transfers', [StockTransferController::class, 'store'])->middleware('auth:sanctum');
+Route::get('/warehouses/{id}/inventory-items', [WarehouseController::class, 'inventoryItems']);

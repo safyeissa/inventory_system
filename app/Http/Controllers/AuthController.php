@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Resources\UserResource;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -23,8 +24,9 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         return response()->json([
+            'success' => true,
             'token' => $user->createToken('api-token')->plainTextToken,
-            'user' => $user
+            'user' => UserResource::make($user)
         ]);
     }
 
@@ -42,8 +44,9 @@ class AuthController extends Controller
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
+            'success' => true,
             'message' => 'User registered successfully',
-            'user' => $user,
+            'user' => UserResource::make($user),
             'token' => $token
         ], 201);
     }

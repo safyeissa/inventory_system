@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class StockTransfer extends Model
 {
     use HasFactory;
+
+
+    protected $guarded = [];
 }
