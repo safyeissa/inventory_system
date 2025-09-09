@@ -32,3 +32,6 @@ Route::post('/register', [AuthController::class, "register"]);
 Route::get('/inventory-items', [InventoryItemController::class, 'index']);
 Route::post('/stock-transfers', [StockTransferController::class, 'store'])->middleware('auth:sanctum');
 Route::get('/warehouses/{id}/inventory-items', [WarehouseController::class, 'inventoryItems']);
+
+
+//new line
