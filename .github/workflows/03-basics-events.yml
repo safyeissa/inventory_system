@@ -1,0 +1,10 @@
+name: 03 Basics Events
+on:
+  pull_request:
+    types: [closed]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, world!"
